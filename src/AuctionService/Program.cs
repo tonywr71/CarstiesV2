@@ -46,6 +46,9 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         options.TokenValidationParameters.ValidateAudience = false;
         options.TokenValidationParameters.NameClaimType = "username";
     });
+
+builder.Services.AddScoped<IAuctionRepository, AuctionRepository>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -64,3 +67,6 @@ catch (Exception e)
 }
 
 app.Run();
+
+//the following line is used for integration testing so that the CustomWebAppFactory class doesn't throw an error
+public partial class Program { };
