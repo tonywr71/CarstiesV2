@@ -18,6 +18,8 @@ spec:
         env:
           - name: ClientApp
             value: https://app.carsties.com
+          - name: IdentityServiceUrl
+            value: https://id.miji.com.au
 ---
 apiVersion: v1
 kind: Service
