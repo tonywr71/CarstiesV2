@@ -5,9 +5,11 @@ const nextConfig = {
     },
     images: {
         domains: [
-            "cdn.pixabay.com"
+            "cdn.pixabay.com",
+            "upload.wikimedia.org"
         ]
-    }
+    },
+    output: "standalone"
 }
 
 module.exports = nextConfig
