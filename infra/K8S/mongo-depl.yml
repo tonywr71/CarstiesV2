@@ -16,18 +16,18 @@ spec:
         image: mongo
         env:
           - name: MONGO_INITDB_ROOT_USERNAME
-            valueFrom: 
+            valueFrom:
               secretKeyRef:
                 name: mongo-secret
-                key:  username
+                key: username
           - name: MONGO_INITDB_ROOT_PASSWORD
-            valueFrom: 
+            valueFrom:
               secretKeyRef:
                 name: mongo-secret
-                key:  password
+                key: password
         ports:
         - containerPort: 27017
-        volumeMounts:
+        volumeMounts: 
         - mountPath: /var/data/mongo
           name: mongodata
       volumes:
@@ -46,5 +46,3 @@ spec:
   ports:
   - port: 27017
     targetPort: 27017
-
-

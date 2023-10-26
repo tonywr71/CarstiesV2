@@ -16,15 +16,15 @@ spec:
         image: rabbitmq:3-management
         env:
           - name: RABBITMQ_DEFAULT_USER
-            valueFrom: 
+            valueFrom:
               secretKeyRef:
                 name: rabbit-secret
-                key:  username
+                key: username
           - name: RABBITMQ_DEFAULT_PASS
-            valueFrom: 
+            valueFrom:
               secretKeyRef:
                 name: rabbit-secret
-                key:  password
+                key: password
         ports:
         - containerPort: 15672
           name: rbmq-mgmt-port
@@ -49,4 +49,3 @@ spec:
   ports:
   - port: 5672
     targetPort: 5672
-

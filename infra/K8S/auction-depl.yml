@@ -42,7 +42,7 @@ spec:
           - name: Kestrel__Endpoints__WebApi__Protocols
             value: Http1
           - name: Kestrel__Endpoints__WebApi__Url
-            value: Http://+:80
+            value: http://+:80
 ---
 apiVersion: v1
 kind: Service
