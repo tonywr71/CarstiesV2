@@ -14,6 +14,8 @@
                 </div>
                 <div class="card-body">
                     <dl>
+                        <dt>RemoteIpAddress</dt>
+                        <dv>@Model.View.RemoteIpAddress</dv>
                         @foreach (var claim in Model.View.AuthenticateResult.Principal.Claims)
                         {
                             <dt>@claim.Type</dt>
@@ -23,7 +25,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="col">
             <div class="card">
                 <div class="card-header">
@@ -42,7 +44,7 @@
                             <dd>
                                 @{
                                     var clients = Model.View.Clients.ToArray();
-                                    for(var i = 0; i < clients.Length; i++)
+                                    for (var i = 0; i < clients.Length; i++)
                                     {
                                         <text>@clients[i]</text>
                                         if (i < clients.Length - 1)
