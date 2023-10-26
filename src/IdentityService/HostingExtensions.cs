@@ -39,6 +39,8 @@ internal static class HostingExtensions
                     options.IssuerUri = "https://id.miji.com.au";
                 }
 
+                // see https://docs.duendesoftware.com/identityserver/v6/fundamentals/resources/
+                // options.EmitStaticAudienceClaim = true;
             })
             .AddInMemoryIdentityResources(Config.IdentityResources)
             .AddInMemoryApiScopes(Config.ApiScopes)
@@ -50,6 +52,7 @@ internal static class HostingExtensions
         {
             options.Cookie.SameSite = SameSiteMode.Lax;
         });
+
         builder.Services.AddAuthentication();
 
         return builder.Build();
@@ -69,7 +72,6 @@ internal static class HostingExtensions
 
         if (app.Environment.IsProduction())
         {
-
             app.Use(async (ctx, next) =>
             {
                 var serverUrls = ctx.RequestServices.GetRequiredService<IServerUrls>();
@@ -77,6 +79,7 @@ internal static class HostingExtensions
                 await next();
             });
         }
+
 
         app.UseIdentityServer();
         app.UseAuthorization();
