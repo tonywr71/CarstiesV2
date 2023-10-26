@@ -20,15 +20,15 @@ public static class Config
     public static IEnumerable<Client> Clients(IConfiguration config) =>
         new Client[]
         {
-            // new Client
-            // {
-            //     ClientId = "postman",
-            //     ClientName = "Postman",
-            //     AllowedScopes = {"openid", "profile", "auctionApp"},
-            //     RedirectUris = {"https://www.getpostman.com/oauth2/callback"},
-            //     ClientSecrets = new[] {new Secret("NotASecret".Sha256())},
-            //     AllowedGrantTypes = {GrantType.ResourceOwnerPassword}
-            // },
+            new Client
+            {
+                ClientId = "postman",
+                ClientName = "Postman",
+                AllowedScopes = {"openid", "profile", "auctionApp"},
+                RedirectUris = {"https://www.getpostman.com/oauth2/callback"},
+                ClientSecrets = new[] {new Secret("NotASecret".Sha256())},
+                AllowedGrantTypes = {GrantType.ResourceOwnerPassword}
+            },
             new Client
             {
                 ClientId = "nextApp",
