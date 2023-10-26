@@ -17,7 +17,7 @@ spec:
         imagePullPolicy: Always
         env:
           - name: ClientApp
-            value: https://app.carsties.com
+            value: https://app.miji.com.au
           - name: IdentityServiceUrl
             value: https://id.miji.com.au
 ---
