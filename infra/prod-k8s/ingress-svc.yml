@@ -2,28 +2,35 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ingress-svc
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
   labels:
     name: ingress-svc
 spec:
   ingressClassName: nginx
+  tls:
+    - hosts:
+      - app.miji.com.au
+      - api.miji.com.au
+      secretName: carsties-tls  
   rules:
-  - host: app.miji.com.au
-    http:
-      paths:
-      - pathType: Prefix
-        path: "/"
-        backend:
-          service:
-            name: webapp-clusterip
-            port: 
-              number: 3000
-  - host: api.miji.com.au
-    http:
-      paths:
-      - pathType: Prefix
-        path: "/"
-        backend:
-          service:
-            name: gateway-clusterip
-            port: 
-              number: 80
+    - host: app.miji.com.au
+      http:
+        paths:
+        - pathType: Prefix
+          path: "/"
+          backend:
+            service:
+              name: webapp-clusterip
+              port: 
+                number: 3000
+    - host: api.miji.com.au
+      http:
+        paths:
+        - pathType: Prefix
+          path: "/"
+          backend:
+            service:
+              name: gateway-clusterip
+              port: 
+                number: 80

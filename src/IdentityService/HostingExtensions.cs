@@ -34,8 +34,11 @@ internal static class HostingExtensions
                     options.IssuerUri = "identity-svc";
                 }
 
-                // see https://docs.duendesoftware.com/identityserver/v6/fundamentals/resources/
-                //options.EmitStaticAudienceClaim = true;
+                if (builder.Environment.IsProduction())
+                {
+                    options.IssuerUri = "https://id.miji.com.au";
+                }
+
             })
             .AddInMemoryIdentityResources(Config.IdentityResources)
             .AddInMemoryApiScopes(Config.ApiScopes)
