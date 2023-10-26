@@ -14,12 +14,20 @@ spec:
       containers:
       - name: webapp
         image: tonywr/web-app
-        imagePullPolicy: Never
+        imagePullPolicy: Always
         ports:
         - containerPort: 3000
         env:
           - name: NEXTAUTH_SECRET
-            value: somethingreallyreallysecret
+            valueFrom:
+              secretKeyRef:
+                name: webapp-secret
+                key: authSecret
+          - name: CLIENT_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: webapp-secret
+                key: clientSecret
           - name: NEXTAUTH_URL
             value: https://app.carsties.com
           - name: API_URL
@@ -39,16 +47,3 @@ spec:
   - port: 3000
     targetPort: 3000
     name: web
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: webapp-lb
-spec:
-  type: LoadBalancer
-  selector:
-    app: webapp
-  ports:
-  - port: 3000
-    targetPort: 3000
-  
